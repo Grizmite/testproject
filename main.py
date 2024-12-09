@@ -12,8 +12,8 @@ pointer = 0
 ctr = 1
 
 # Initialiser le dépôt Git
-os.system("git config user.name 'VotreNom'")
-os.system("git config user.email 'VotreEmail@example.com'")
+os.system("git config user.name 'Grizmite'")
+os.system("git config user.email 'chaberjb@hotmail.com'")
 if not os.path.exists(".git"):
     os.system("git init")
 
