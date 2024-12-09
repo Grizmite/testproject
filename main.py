@@ -4,17 +4,22 @@ from random import randint, random
 
 # Configuration
 total_day = 596  # nombre total de jours en arrière pour les commits
-repo_link = "https://github.com/Grizmite/sitepro.git"  # Lien du repo
+repo_link = "https://github.com/Grizmite/testproject.git"  # Lien du repo
 
 # Initialisation
 now = datetime.now()
 pointer = 0
 ctr = 1
 
-# Configuration du dépôt
-os.system("git config user.name")
-os.system("git config user.email")
-os.system("git init")
+# Initialiser le dépôt Git
+os.system("git config user.name 'VotreNom'")
+os.system("git config user.email 'VotreEmail@example.com'")
+if not os.path.exists(".git"):
+    os.system("git init")
+
+# Ajouter ou mettre à jour le remote
+os.system("git remote remove origin || true")  # Supprime l'existant si nécessaire
+os.system(f"git remote add origin {repo_link}")
 
 # Boucle pour générer les commits et branches/PR
 while total_day > 0:
@@ -56,7 +61,6 @@ while total_day > 0:
     pointer += 1
     total_day -= 1
 
-# Final push pour la branche principale
-os.system(f"git remote add origin {repo_link}")
-os.system("git branch -M main")
+# Pousser la branche principale
+os.system("git checkout main")
 os.system("git push -u origin main -f")
